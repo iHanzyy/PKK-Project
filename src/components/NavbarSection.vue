@@ -1,8 +1,8 @@
 <template>
-  <nav class="bg-red-600 dark:bg-gray-900">
+  <nav class="navBar dark:bg-gray-900">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
-      <a href="#" class="flex items-center space-x-9 rtl:space-x-reverse">
-        <img src="../assets/dkv-logo.png" class="mr-4 size-9" alt="DKV Logo" />
+      <a href="#" class="flex items-center space-x-9">
+        <img :src="logo" class="mr-4 size-10" alt="DKV Logo" />
       </a>
       <button
         data-collapse-toggle="navbar-default"
@@ -60,17 +60,22 @@
   </nav>
 </template>
 
-<script>
+<script setup>
 import logoDKV from '../assets/dkv-logo.png'
 
-export default {
-  name: 'NavBar',
-  data() {
-    return {
-      logoDKV,
-    }
-  },
-}
+const logo = logoDKV
 </script>
 
-<style></style>
+<style>
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: rgba(255, 104, 137, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+</style>
