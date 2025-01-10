@@ -10,9 +10,7 @@
   </div>
 </template>
 
-<script setup>
-import bgHome from '../assets/bgHome.png'
-</script>
+<script setup></script>
 
 <style>
 .background {
