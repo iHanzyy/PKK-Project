@@ -1,8 +1,10 @@
 <template>
-  <nav class="navBar dark:bg-gray-900">
-    <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
-      <a href="#" class="flex items-center space-x-9">
-        <img :src="logo" class="mr-4 size-10" alt="DKV Logo" />
+  <nav
+    class="bg-[rgba(211,77,102,0.8)] h-[67px] absolute w-full top-0 left-0 px-5 backdrop-blur-md z-10 transition-all duration-300"
+  >
+    <div class="flex flex-wrap items-center justify-between max-w-screen-xl py-2 mx-auto">
+      <a href="#" class="relative flex items-center space-x-9">
+        <img :src="logo" alt="DKV Logo" class="object-cover w-16 h-16 -mt-2" />
       </a>
       <button
         data-collapse-toggle="navbar-default"
@@ -29,13 +31,11 @@
         </svg>
       </button>
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul
-          class="flex flex-col p-4 mt-4 font-medium bg-red-600 border border-black rounded-lg md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-red-600 dark:bg-white md:dark:bg-white dark:border-white"
-        >
+        <ul class="flex flex-col p-0 mt-0 font-semibold md:flex-row md:space-x-8 md:p-0 md:mt-0">
           <li>
             <a
               href="#"
-              class="block px-3 py-2 text-white bg-red-600 rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white"
+              class="block px-4 py-2 text-white md:text-white text-[18px] font-semibold leading-normal hover:text-gray-200"
               aria-current="page"
               >Home</a
             >
@@ -43,14 +43,14 @@
           <li>
             <a
               href="#"
-              class="block px-3 py-2 text-white bg-red-600 rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white"
+              class="block px-4 py-2 text-white md:text-white text-[18px] font-semibold hover:text-gray-200"
               >Gallery</a
             >
           </li>
           <li>
             <a
               href="#"
-              class="block px-3 py-2 text-white bg-red-600 rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-white"
+              class="block px-4 py-2 text-white md:text-white text-[18px] font-semibold hover:text-gray-200"
               >Structure & Schedule</a
             >
           </li>
@@ -65,17 +65,3 @@ import logoDKV from '../assets/dkv-logo.png'
 
 const logo = logoDKV
 </script>
-
-<style>
-.navBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  background: rgba(255, 104, 137, 0.7);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-</style>
