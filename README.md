@@ -1,41 +1,20 @@
-# clazzsite
+# Clazzsite
 
-This template should help get you started developing with Vue 3 in Vite.
+**Clazzsite** adalah platform yang bertujuan untuk menyediakan informasi tentang kelas.
 
-## Recommended IDE Setup
+Teknologi yang digunakan diantaranya:
+- React JS: Membangun antarmuka pengguna yang responsif dan interaktif.
+- FLowbite: digunakan untuk mendesain antarmuka dengan komponen Material Design yang indah.
+- Tailwind CSS: Memastikan tampilan dan gaya yang modern dan fleksibel.
+- Vue Slick: Untuk tampilan galeri yang halus dan menarik.
+- AOS: Animasi yang menarik untuk meningkatkan tampilan dan nuansa situs.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Apa yang dapat Anda temukan di web ini:
+- Gallery: Menampilkan gambar-gambar menarik yang terkait dengan kelas kami.
+- Structure And Schedule: Memberikan informasi rinci tentang struktur kelas dan jadwal yang tersedia.  
 
-## Customize configuration
+Project ini di buat oleh :
+- Jonah
+- Callista
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Kunjungi situs web kami di **COMING SOON** untuk mendapatkan informasi lebih lanjut
