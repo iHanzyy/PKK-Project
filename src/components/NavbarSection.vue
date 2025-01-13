@@ -1,10 +1,10 @@
 <template>
   <nav
-    class="bg-[rgba(211,77,102,0.8)] h-[67px] absolute w-full top-0 left-0 px-5 backdrop-blur-md z-10 transition-all duration-300"
+    class="bg-[rgba(211,77,102,0.8)] h-[67px] fixed w-full top-0 left-0 backdrop-blur-md z-10 transition-all duration-300 flex items-center"
   >
-    <div class="flex flex-wrap items-center justify-between max-w-screen-xl py-2 mx-auto">
-      <a href="#" class="top-[1px] relative flex items-center space-x-9">
-        <img :src="logo" alt="DKV Logo" class="object-cover w-16 h-16 -mt-2" />
+    <div class="flex items-center justify-between w-full h-full max-w-screen-xl mx-auto">
+      <a href="#" class="flex items-center h-full space-x-4">
+        <img :src="logo" alt="DKV Logo" class="object-cover w-16 h-16 mr-5" />
       </a>
       <button
         data-collapse-toggle="navbar-default"
@@ -30,29 +30,31 @@
           />
         </svg>
       </button>
-      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul class="flex flex-col p-0 mt-0 font-semibold md:flex-row md:space-x-8 md:p-0 md:mt-0">
+      <div class="hidden h-full md:block" id="navbar-default">
+        <ul class="flex items-center h-full space-x-8">
           <li>
             <a
-              href="#"
-              class="block px-4 py-2 text-3xl font-semibold leading-normal text-white md:text-white hover:text-gray-200"
-              aria-current="page"
-              >Home</a
+              href="#home"
+              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#DC0037] hover:rounded-full transition-all duration-300 ease-in-out"
             >
+              Home
+            </a>
           </li>
           <li>
             <a
-              href="#"
-              class="block px-4 py-2 text-3xl font-semibold text-white md:text-white hover:text-gray-200"
-              >Gallery</a
+              href="#gallery"
+              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#DC0037] hover:rounded-full transition-all duration-300 ease-in-out"
             >
+              Gallery
+            </a>
           </li>
           <li>
             <a
-              href="#"
-              class="block px-4 py-2 text-3xl font-semibold text-white md:text-white hover:text-gray-200"
-              >Structure & Schedule</a
+              href="#structure"
+              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#DC0037] hover:rounded-full transition-all duration-300 ease-in-out"
             >
+              Structure & Schedule
+            </a>
           </li>
         </ul>
       </div>
