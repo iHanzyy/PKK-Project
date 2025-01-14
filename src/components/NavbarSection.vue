@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import logoDKV from '../assets/dkv-logo.png'
+import logoDKV from '/public/dkvicon.svg'
 
 const logo = logoDKV
 
