@@ -1,6 +1,6 @@
 <template>
   <section id="gallery">
-    <div class="relative w-full min-h-screen">
+    <div class="relative w-full ">
       <!-- Gallery Section -->
       <div class="px-8 py-16 bg-gradient-to-b from-pink-500 via-red-600 to-red-700">
         <h1 class="mb-10 text-5xl font-extrabold text-center text-white font-poppins">

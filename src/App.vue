@@ -12,7 +12,7 @@ import ScrollBarCustom from './components/ScrollBarCustom.vue'
   <NavSection />
   <HomeSection />
   <GallerySection />
-  <!-- <StructureSection /> -->
+  <StructureSection />
   <schedule-section />
 </template>
 
