@@ -8,6 +8,7 @@ Teknologi yang digunakan diantaranya:
 - Tailwind CSS: Memastikan tampilan dan gaya yang modern dan fleksibel.
 - Vue Slick: Untuk tampilan galeri yang halus dan menarik.
 - AOS: Animasi yang menarik untuk meningkatkan tampilan dan nuansa situs.
+- Firebase: Menyediakan backend yang aman dan efisien untuk pengelolaan data.
 
 Apa yang dapat Anda temukan di web ini:
 - Gallery: Menampilkan gambar-gambar menarik yang terkait dengan kelas kami.
