@@ -1,5 +1,7 @@
 <template>
-  <footer class="relative flex flex-col items-center w-full py-6 bg-red-700">
+  <footer
+    class="relative flex flex-col items-center w-full py-6 bg-gradient-to-b from-[#FF8A08] to-[#FFC100]"
+  >
     <div class="flex items-center w-full gap-4 px-8 mt-4 mb-4">
       <img
         class="absolute w-24 h-24 mr-[-10px] ml-10"
@@ -12,7 +14,7 @@
     </div>
     <div class="w-11/12 my-2 border-t-2 border-white"></div>
     <div class="text-center text-white text-base font-normal font-['Poppins']">
-      © 2024 XI DKV 3
+      © 2025 XI DKV 3
     </div>
   </footer>
 </template>

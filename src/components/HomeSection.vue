@@ -2,8 +2,13 @@
   <section id="home">
     <div class="relative w-full min-h-screen">
       <div class="w-full min-h-screen bg-cover" :style="{ backgroundImage: `url(${bgHome})` }">
+        <!-- Overlay dengan warna -->
         <div
-          class="absolute top-0 left-0 flex flex-col items-center justify-center w-full min-h-screen text-white bg-black bg-opacity-70"
+          class="absolute top-0 left-0 w-full h-full"
+          :style="{ backgroundColor: '#C40C0C', opacity: 0.5 }"
+        ></div>
+        <div
+          class="absolute top-0 left-0 flex flex-col items-center justify-center w-full min-h-screen text-white bg-black bg-opacity-50"
         >
           <div class="flex flex-col items-center justify-center px-4 py-8 space-y-6">
             <div

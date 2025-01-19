@@ -1,6 +1,6 @@
 <template>
   <div id="structure">
-    <div class="bg-red-700">
+    <div class="bg-gradient-to-b from-[#FF6500] to-[#FF8A08]">
       <h1 class="mb-10 text-5xl font-extrabold text-center text-white font-poppins">
         <span
           @click="activeComponent = 'Structure'"

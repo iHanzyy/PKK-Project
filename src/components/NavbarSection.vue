@@ -1,10 +1,10 @@
 <template>
   <nav
-    class="bg-[rgba(211,77,102,0.8)] h-[67px] fixed w-full top-0 left-0 backdrop-blur-md z-10 transition-all duration-300 flex items-center"
+    class="bg-[#C40C0C] h-[67px] fixed w-full top-0 left-0 backdrop-blur-md z-10 transition-all duration-300 flex items-center"
   >
     <div class="flex items-center justify-between w-full h-full max-w-screen-xl mx-auto">
       <a href="#" class="flex items-center h-full space-x-4">
-        <img :src="logo" alt="DKV Logo" class="object-cover w-16 h-16 mr-5" />
+        <img :src="logo" alt="DKV Logo" class="object-cover w-16 h-16 mr-5 rounded-full" />
       </a>
       <button
         data-collapse-toggle="navbar-default"
@@ -35,7 +35,7 @@
           <li>
             <a
               href="#home"
-              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#DC0037] hover:rounded-full transition-all duration-300 ease-in-out"
+              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#FF6500] hover:rounded-full transition-all duration-500 ease-in-out"
             >
               Home
             </a>
@@ -43,7 +43,7 @@
           <li>
             <a
               href="#gallery"
-              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#DC0037] hover:rounded-full transition-all duration-300 ease-in-out"
+              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#FF6500] hover:rounded-full transition-all duration-500 ease-in-out"
             >
               Gallery
             </a>
@@ -51,7 +51,7 @@
           <li>
             <a
               href="#structure"
-              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#DC0037] hover:rounded-full transition-all duration-300 ease-in-out"
+              class="px-4 py-2 text-white text-[30px] font-poppins font-semibold capitalize hover:bg-[#FF6500] hover:rounded-full transition-all duration-500 ease-in-out"
             >
               Structure & Schedule
             </a>
