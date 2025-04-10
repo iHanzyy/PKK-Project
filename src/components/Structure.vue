@@ -1,55 +1,43 @@
 <template>
-  <div class="relative flex flex-col items-center justify-center space-y-16">
-    <!-- Kartu Top Roles -->
-    <div v-for="(item, index) in topRoles" :key="index" class="relative shadow-xl card group">
-      <!-- Box 1: Foto -->
-      <img :src="item.image" alt="role-image" class="w-60 h-72 rounded-t-xl" />
+  <div class="container-structure">
+    <!-- Top Roles -->
+    <div class="top-roles">
+      <div v-for="(item, index) in topRoles" :key="index" class="card-wrapper">
+        <div class="card group" data-aos="fade-up" data-aos-duration="700">
+          <img :src="item.image" alt="role-image" />
 
-      <!-- Box 3: Role (visible initially, di depan item.name) -->
-      <div class="z-20 p-4 text-black bg-white rounded-b-xl">
-        <h1 class="font-bold text-center">{{ item.name }}</h1>
-      </div>
+          <div class="role-name">
+            <h1>{{ item.name }}</h1>
+          </div>
 
-      <!-- Box 2: Nama (hidden by default, muncul di belakang item.role saat hover) -->
-      <div
-        class="absolute left-0 z-10 w-full p-4 pb-2 text-center text-black transition-transform duration-300 transform translate-y-full bg-white bottom-[3.4rem] group-hover:translate-y-0"
-      >
-        <h1 class="font-bold">{{ item.role }}</h1>
+          <div class="role-title">
+            <h1>{{ item.role }}</h1>
+          </div>
+        </div>
+        <!-- Vertical line for top roles -->
+        <div class="vertical-line-top"></div>
       </div>
-      <!-- Garis Vertikal untuk topRoles -->
-      <div
-        class="absolute z-50 w-1 h-16 transform -translate-x-1/2 bg-white top-full left-1/2"
-      ></div>
     </div>
 
-    <!-- Garis Horizontal Penghubung -->
-    <div class="relative flex items-center justify-center w-full">
-      <!-- Garis Horizontal -->
-      <div class="absolute h-1 bg-white w-[calc(100%-30rem)] z-10"></div>
-    </div>
+    <!-- Horizontal connecting line -->
+    <div class="horizontal-line"></div>
 
-    <!-- Kartu Bottom Roles -->
-    <div class="relative flex flex-row items-center justify-center mt-16 space-x-16">
-      <div v-for="(item, index) in bottomRoles" :key="index" class="relative shadow-xl card group">
-        <!-- Box 1: Foto -->
-        <img :src="item.image" alt="role-image" class="w-60 h-72 rounded-t-xl" />
+    <!-- Bottom Roles -->
+    <div class="bottom-roles">
+      <div v-for="(item, index) in bottomRoles" :key="index" class="card-wrapper">
+        <!-- Vertical line for bottom roles -->
+        <div class="vertical-line-bottom"></div>
+        <div class="card group" data-aos="fade-up" data-aos-duration="700">
+          <img :src="item.image" alt="role-image" />
 
-        <!-- Box 3: Role (visible initially, di depan item.name) -->
-        <div class="z-20 p-4 text-black bg-white rounded-b-xl">
-          <h1 class="font-bold text-center">{{ item.name }}</h1>
+          <div class="role-name">
+            <h1>{{ item.name }}</h1>
+          </div>
+
+          <div class="role-title">
+            <h1>{{ item.role }}</h1>
+          </div>
         </div>
-
-        <!-- Box 2: Nama (hidden by default, muncul di belakang item.role saat hover) -->
-        <div
-          class="absolute left-0 z-10 w-full p-4 pb-2 text-center text-black transition-transform duration-300 transform translate-y-full bg-white bottom-[3.4rem] group-hover:translate-y-0"
-        >
-          <h1 class="font-bold">{{ item.role }}</h1>
-        </div>
-
-        <!-- Garis Vertikal untuk bottomRoles -->
-        <div
-          class="absolute z-30 w-1 h-16 transform -translate-x-1/2 bg-white bottom-full left-1/2"
-        ></div>
       </div>
     </div>
   </div>
@@ -79,16 +67,241 @@ const bottomRoles = [
 </script>
 
 <style scoped>
+.container-structure {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.top-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.bottom-roles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: 100%;
+  justify-items: center;
+  margin-top: 0;
+  position: relative;
+}
+
+.card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .card {
   position: relative;
+  width: 220px;
   overflow: visible;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .card img {
+  width: 100%;
+  height: 288px;
   object-fit: cover;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
 }
 
-.card div {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.role-name {
+  position: relative;
+  z-index: 20;
+  padding: 1rem;
+  background: white;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+.role-title {
+  position: absolute;
+  left: 0;
+  bottom: 3.4rem;
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  background: white;
+  transform: translateY(100%);
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease;
+  z-index: 10;
+  opacity: 0;
+}
+
+
+
+.card:hover .role-title {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.vertical-line-top,
+.vertical-line-bottom,
+.horizontal-line {
+  background: white;
+  position: relative;
+  z-index: 1;
+}
+
+.vertical-line-top {
+  width: 4px;
+  height: 40px;
+  margin: 0;
+}
+
+.vertical-line-bottom {
+  width: 4px;
+  height: 40px;
+  margin: 0;
+}
+
+.horizontal-line {
+  width: 77%;
+  height: 4px;
+  margin: 0;
+}
+
+.role-name h1,
+.role-title h1 {
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
+}
+
+@media (max-width: 1200px) {
+  .horizontal-line {
+    width: 85%;
+  }
+}
+
+@media (max-width: 992px) {
+  .horizontal-line {
+    width: 80%;
+  }
+
+  .vertical-line-top,
+  .vertical-line-bottom {
+    height: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-structure {
+    padding: 1rem;
+  }
+
+  .top-roles {
+    gap: 0.75rem;
+  }
+
+  .bottom-roles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .card {
+    width: 180px;
+  }
+
+  .card img {
+    height: 220px;
+  }
+
+  .role-name h1,
+  .role-title h1 {
+    font-size: 0.875rem;
+    padding: 0 0.25rem;
+  }
+
+  .vertical-line-top,
+  .vertical-line-bottom {
+    height: 30px;
+  }
+
+  .horizontal-line {
+    width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-structure {
+    padding: 1rem 0.5rem;
+  }
+
+  .top-roles {
+    gap: 0;
+    width: 100%;
+  }
+
+  .bottom-roles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .card {
+    width: 150px;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .role-name,
+  .role-title {
+    padding: 0.5rem;
+  }
+
+  .role-name h1,
+  .role-title h1 {
+    font-size: 0.7rem;
+  }
+
+  .vertical-line-top,
+  .vertical-line-bottom {
+    height: 25px;
+  }
+
+  .horizontal-line {
+    width: 65%;
+    height: 4px;
+  }
+}
+
+/* Tambahan untuk mencegah text wrapping dan overflow */
+.role-name,
+.role-title {
+  width: 100%;
+  min-width: 0;
+}
+
+.card {
+  min-width: 0;
+  overflow: hidden;
 }
 </style>

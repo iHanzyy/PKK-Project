@@ -1,4 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Reset default styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure sections are flush */
+section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent horizontal scrolling */
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 @import './assets/base.css';

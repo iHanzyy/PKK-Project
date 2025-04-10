@@ -4,18 +4,23 @@
     :class="{ 'shadow-lg': isScrolled }"
   >
     <div class="container px-4 mx-auto sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 md:h-20">
+      <div class="flex justify-between items-center h-16 md:h-20">
         <!-- Logo -->
-        <a href="#" class="flex items-center flex-shrink-0" @click.prevent="scrollToTop">
+        <a
+          href="#"
+          class="flex flex-shrink-0 items-center"
+          @click.prevent="scrollToTop"
+          v-motion="{ hover: { scale: 1.1 } }"
+        >
           <img
             :src="logo"
             alt="DKV Logo"
-            class="w-12 h-12 transition-transform duration-300 rounded-full md:h-16 md:w-16 hover:scale-110"
+            class="w-12 h-12 rounded-full transition-transform duration-300 md:h-16 md:w-16"
           />
         </a>
 
         <!-- Desktop Menu -->
-        <div class="items-center hidden space-x-4 md:flex lg:space-x-8">
+        <div class="hidden items-center space-x-4 md:flex lg:space-x-8">
           <a
             v-for="(nav, index) in navigation"
             :key="index"
@@ -53,11 +58,11 @@
       <!-- Mobile Menu -->
       <transition
         enter-active-class="transition duration-200 ease-out"
-        enter-from-class="-translate-y-5 opacity-0"
-        enter-to-class="translate-y-0 opacity-100"
+        enter-from-class="opacity-0 -translate-y-5"
+        enter-to-class="opacity-100 translate-y-0"
         leave-active-class="transition duration-150 ease-in"
-        leave-from-class="translate-y-0 opacity-100"
-        leave-to-class="-translate-y-5 opacity-0"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 -translate-y-5"
       >
         <div
           v-show="isMenuOpen"
@@ -68,7 +73,7 @@
               v-for="(nav, index) in navigation"
               :key="index"
               href="#"
-              @click.prevent="scrollToSection(nav.href)"
+              @click.prevent="(scrollToSection(nav.href), closeMenu())"
               class="block px-4 py-3 text-2xl font-poppins text-white rounded-lg hover:bg-[#FF6500] transition-colors duration-300"
             >
               {{ nav.name }}
@@ -110,20 +115,24 @@ const navigation = [
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 
-// Fungsi scroll halus
+// Scroll ke section yang sesuai
 const scrollToSection = (sectionId) => {
   closeMenu()
-  const section = document.querySelector(sectionId)
-  if (section) {
-    section.scrollIntoView({
+  const element = document.querySelector(sectionId)
+  if (element) {
+    // Tambahkan offset untuk navbar
+    const offset = 80 // Sesuaikan dengan tinggi navbar
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+    window.scrollTo({
+      top: elementPosition - offset,
       behavior: 'smooth',
-      block: 'start',
     })
   }
 }
 
 // Scroll ke atas saat logo diklik
 const scrollToTop = () => {
+  closeMenu()
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
@@ -132,10 +141,17 @@ const scrollToTop = () => {
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+  // Nonaktifkan scroll pada body saat menu mobile terbuka
+  if (isMenuOpen.value) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
 }
 
 const closeMenu = () => {
   isMenuOpen.value = false
+  document.body.style.overflow = ''
 }
 
 const handleScroll = () => {
@@ -145,12 +161,21 @@ const handleScroll = () => {
   }
 }
 
+// Tutup menu saat ukuran layar berubah ke desktop
+const handleResize = () => {
+  if (window.innerWidth >= 768 && isMenuOpen.value) {
+    closeMenu()
+  }
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  window.addEventListener('resize', handleResize)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', handleResize)
 })
 </script>
 
@@ -170,5 +195,10 @@ onBeforeUnmount(() => {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
+}
+
+/* Memastikan menu mobile tetap di atas konten lain */
+.md\:hidden {
+  z-index: 50;
 }
 </style>
