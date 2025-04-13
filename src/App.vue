@@ -30,6 +30,7 @@ onMounted(() => {
 .app-container {
   min-height: 100vh;
   overflow-x: hidden;
+  background-color: #fafafa;
 }
 
 .content-wrapper {
@@ -50,9 +51,26 @@ body {
   overflow-x: hidden;
 }
 
+/* Add this to create smoother transitions between sections */
 section {
   width: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+
+/* Add this class to any section that needs a soft drop shadow */
+.section-shadow {
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+/* This helps create gentle transitions between sections */
+.section-overlap {
+  margin-top: -2rem;
+  padding-top: 2rem;
+  position: relative;
+  z-index: 5;
 }
 </style>

@@ -10,14 +10,15 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 
+// Use environment variables instead of hardcoded values
 const firebaseConfig = {
-  apiKey: 'AIzaSyCnzBKqNMWk26ta0j4F6yLAtwoM1FTKthw',
-  authDomain: 'clazzsite.firebaseapp.com',
-  projectId: 'clazzsite',
-  storageBucket: 'clazzsite.firebasestorage.app',
-  messagingSenderId: '776418035889',
-  appId: '1:776418035889:web:2b9d510be1bc0a6d30ba90',
-  measurementId: 'G-GZF4J2HEM6',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 }
 
 const app = initializeApp(firebaseConfig)

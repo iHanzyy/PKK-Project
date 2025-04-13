@@ -1,7 +1,10 @@
 <template>
   <section id="gallery" class="section-container">
     <div class="w-full">
-      <div class="py-16 bg-gradient-to-b from-[#C40C0C] to-[#FF6500] relative">
+      <div class="py-16 bg-gradient-to-b from-[#D92323] to-[#FF6500] relative">
+        <!-- Subtle texture overlay -->
+        <div class="absolute inset-0 pattern-overlay"></div>
+
         <h1 class="mb-10 text-5xl font-extrabold text-center text-white font-poppins">
           Our Gallery
         </h1>
@@ -239,5 +242,11 @@ onMounted(async () => {
   .modal-content {
     width: 95vw;
   }
+}
+
+/* Add this new class for texture */
+.pattern-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
 }
 </style>

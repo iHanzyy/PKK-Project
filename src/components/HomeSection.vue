@@ -1,32 +1,31 @@
 <template>
-  <section id="home" class="section-container" data-aos="fade-up">
-    <div class="relative w-full min-h-screen">
-      <div class="w-full min-h-screen bg-center bg-cover" :style="{ backgroundImage: `url(${bgHome})` }">
-        <!-- Overlay dengan gradient untuk efek yang lebih dinamis -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-red-800/50 to-black/60"></div>
+  <section id="home" class="section-container">
+    <!-- Responsive container with aspect ratio control -->
+    <div class="home-container">
+      <div class="background-wrapper" :style="{ backgroundImage: `url(${bgHome})` }">
+        <!-- Overlay with gradient for dynamic effect -->
+        <div class="gradient-overlay"></div>
 
-        <!-- Konten utama dengan animasi dan responsivitas lebih baik -->
-        <div class="relative flex flex-col items-center justify-center w-full min-h-screen px-4 text-white">
-          <div class="w-full max-w-6xl space-y-4 md:space-y-8 lg:space-y-12">
-            <!-- Text dengan animasi fade-in -->
+        <!-- Main content with better responsive layout -->
+        <div class="content-wrapper">
+          <div class="content-inner">
+            <!-- First text with animation -->
             <div class="opacity-0 animate-fade-in-down" :style="{ animationDelay: '0.3s' }">
-              <h2
-                class="text-2xl leading-tight tracking-wider text-center md:text-4xl lg:text-5xl font-poppins md:leading-relaxed">
+              <h2 class="greeting-text">
                 Hello Everyone!
               </h2>
             </div>
 
-            <!-- Judul utama dengan efek hover -->
+            <!-- Main title with hover effect -->
             <div class="opacity-0 animate-fade-in-up" :style="{ animationDelay: '0.6s' }">
-              <h1
-                class="text-6xl font-extrabold text-center transition-all duration-500 transform md:text-8xl lg:text-9xl hover:scale-105 hover:text-shadow-glow">
+              <h1 class="welcome-text">
                 WELCOME
               </h1>
             </div>
 
-            <!-- Subjudul dengan animasi -->
+            <!-- Subtitle with animation -->
             <div class="opacity-0 animate-fade-in-down" :style="{ animationDelay: '0.9s' }">
-              <h3 class="text-3xl tracking-wide text-center md:text-5xl lg:text-6xl font-poppins">
+              <h3 class="class-text">
                 TO XI DKV 3
               </h3>
             </div>
@@ -51,13 +50,78 @@ const bgHome = backgroundHome
   overflow: hidden;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-.font-poppins {
-  font-family: 'Poppins', sans-serif;
+.home-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* Default full height on desktop */
 }
 
-/* Animasi Kustom */
+.background-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(168, 28, 28, 0.5), rgba(0, 0, 0, 0.6));
+}
+
+.content-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+.content-inner {
+  width: 100%;
+  max-width: 72rem;
+  /* 6xl in Tailwind */
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.greeting-text {
+  font-size: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.welcome-text {
+  font-size: 9rem;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  transition: all 0.5s ease;
+}
+
+.welcome-text:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 30px rgba(251, 0, 4, 0.8), 0 0 50px rgba(251, 0, 4, 0.6);
+}
+
+.class-text {
+  font-size: 4rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Animations */
 @keyframes fade-in-down {
   from {
     opacity: 0;
@@ -90,34 +154,86 @@ const bgHome = backgroundHome
   animation: fade-in-up 1s ease-out forwards;
 }
 
-/* Efek Glow pada Hover */
-.hover-text-shadow-glow:hover {
-  text-shadow:
-    0 0 30px rgba(251, 0, 4, 0.8),
-    0 0 50px rgba(251, 0, 4, 0.6);
-}
-
-/* Responsive Text */
-@media (max-width: 640px) {
-  h1 {
-    font-size: 4rem;
+/* Mobile Responsive Styles */
+@media (max-width: 1024px) {
+  .content-inner {
+    gap: 2rem;
   }
 
-  h3 {
+  .greeting-text {
     font-size: 2rem;
+  }
+
+  .welcome-text {
+    font-size: 7rem;
+  }
+
+  .class-text {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    height: auto;
+  }
+
+  .background-wrapper {
+    /* 16:9 aspect ratio container */
+    padding-top: 56.25%;
+    height: 0;
+  }
+
+  .content-wrapper {
+    position: absolute;
+    top: 0;
+  }
+
+  .greeting-text {
+    font-size: 1.75rem;
+  }
+
+  .welcome-text {
+    font-size: 5rem;
+  }
+
+  .class-text {
+    font-size: 3rem;
+  }
+
+  .content-inner {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .greeting-text {
+    font-size: 1.5rem;
+  }
+
+  .welcome-text {
+    font-size: 3.5rem;
+  }
+
+  .class-text {
+    font-size: 2.25rem;
+  }
+
+  .content-inner {
+    gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  h1 {
+  .greeting-text {
+    font-size: 1.25rem;
+  }
+
+  .welcome-text {
     font-size: 3rem;
   }
 
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  h3 {
+  .class-text {
     font-size: 1.75rem;
   }
 }

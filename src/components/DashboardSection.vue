@@ -5,7 +5,7 @@
       <div class="login-box">
         <div class="login-header">
           <div class="logo-container">
-            <div class="logo-animation"></div>
+            <img src="/public/jacicon.svg" alt="JACorporation Logo" />
           </div>
           <h2 class="text-3xl font-bold text-slate-800">Admin Portal</h2>
           <p class="text-slate-600">Sign in to manage your gallery</p>
@@ -426,9 +426,6 @@ onMounted(() => {
   @apply mx-auto mb-6 w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center;
 }
 
-.logo-animation {
-  @apply w-10 h-10 bg-indigo-500 rounded-md animate-pulse;
-}
 
 .login-form {
   @apply p-8 space-y-5;

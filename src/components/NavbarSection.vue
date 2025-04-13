@@ -2,7 +2,8 @@
   <!-- Navbar wrapper with height -->
   <header class="fixed top-0 left-0 z-50 w-full h-20 md:h-24">
     <!-- Navbar with background but no fixed position -->
-    <nav class="bg-[#C40C0C] w-full h-full transition-all duration-300" :class="{ 'shadow-lg': isScrolled }">
+    <nav class="bg-gradient-to-r from-[#C40C0C] to-[#D92323] w-full h-full transition-all duration-300"
+      :class="{ 'shadow-lg': isScrolled }">
       <div class=" px-4 mx-auto sm:px-6 lg:px-8 min-h-[80px]">
         <div class="flex items-center justify-between h-20 md:h-24">
           <!-- Logo -->
@@ -59,7 +60,7 @@
   </header>
 
   <!-- Spacer -->
-  <div class="h-24 md:h-24"></div>
+  <div class="h-20"></div>
 </template>
 
 <script setup>
