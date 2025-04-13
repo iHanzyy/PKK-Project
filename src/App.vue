@@ -1,24 +1,27 @@
 <script setup>
-import NavSection from './components/NavbarSection.vue'
-import HomeSection from './components/HomeSection.vue'
-import GallerySection from './components/GallerySection.vue'
-import StructureSection from './components/StructureSection.vue'
-import FooterSection from './components/FooterSection.vue'
+import { ref, onMounted } from 'vue'
+
+import Loader from './components/Loader.vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-AOS.init()
+const isLoading = ref(true)
+
+onMounted(() => {
+  // Inisialisasi AOS
+  AOS.init()
+  // Simulasikan delay loading (sesuaikan dengan kebutuhan atau hapus jika sudah optimal)
+  setTimeout(() => {
+    isLoading.value = false
+  }, 1000)
+})
 </script>
 
 <template>
-  <div class="app-container">
-    <NavSection />
-    <div class="content-wrapper">
-      <HomeSection />
-      <GallerySection />
-      <StructureSection />
-      <schedule-section />
-      <FooterSection />
+  <div>
+    <Loader v-if="isLoading" />
+    <div v-else class="app-container">
+      <router-view />
     </div>
   </div>
 </template>

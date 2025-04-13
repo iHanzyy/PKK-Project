@@ -6,8 +6,23 @@
           Our Gallery
         </h1>
 
+        <!-- Loading state -->
+        <div v-if="isLoading" class="flex items-center justify-center py-20">
+          <div class="w-16 h-16 border-4 border-white rounded-full border-t-transparent animate-spin"></div>
+        </div>
+
+        <!-- No images message -->
+        <div v-else-if="galleryImages.length === 0" class="flex flex-col items-center justify-center py-20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-white opacity-70" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <p class="mt-4 text-2xl font-medium text-white">No images available</p>
+        </div>
+
         <!-- Marquee Gallery Container -->
-        <div class="marquee-container">
+        <div v-else class="marquee-container">
           <div class="marquee-content" ref="marqueeContent" :class="{ paused: hoveredIndex !== null }">
             <div v-for="(image, index) in [...galleryImages, ...galleryImages]" :key="index" class="marquee-item"
               :class="{
@@ -15,7 +30,7 @@
                 inactive: hoveredIndex !== null && hoveredIndex !== index
               }" @mouseenter="hoveredIndex = index" @mouseleave="hoveredIndex = null">
               <div class="image-wrapper">
-                <img :src="image.src" :alt="image.alt" width="450" height="337" loading="lazy"
+                <img :src="image.image" :alt="image.description" width="450" height="337" loading="lazy"
                   class="w-full aspect-[4/3] object-cover rounded-[20px] shadow-xl" @click="showModal(image)" />
               </div>
             </div>
@@ -25,7 +40,7 @@
         <!-- Modal for image preview -->
         <div v-if="selectedImage" class="modal-overlay" @click="closeModal">
           <div class="modal-content" @click.stop>
-            <img :src="selectedImage.src" :alt="selectedImage.alt" class="modal-image" />
+            <img :src="selectedImage.image" :alt="selectedImage.description" class="modal-image" />
             <p class="modal-description">{{ selectedImage.description }}</p>
             <button class="modal-close" @click="closeModal">&times;</button>
           </div>
@@ -36,23 +51,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import gallery1 from '../assets/galerry-1.jpg'
-import gallery2 from '../assets/galerry-2.jpg'
-import gallery3 from '../assets/galerry-3.jpg'
-import gallery4 from '../assets/galerry-4.jpg'
-import gallery5 from '../assets/galerry-5.jpg'
-import gallery6 from '../assets/galerry-6.jpg'
+import { ref, onMounted } from 'vue'
+import { getAllGalleryItems } from '../services/galleryService'
 
-const galleryImages = [
-  { src: gallery1, alt: 'Gallery 1', description: 'Description 1' },
-  { src: gallery2, alt: 'Gallery 2', description: 'Description 2' },
-  { src: gallery3, alt: 'Gallery 3', description: 'Description 3' },
-  { src: gallery4, alt: 'Gallery 4', description: 'Description 4' },
-  { src: gallery5, alt: 'Gallery 5', description: 'Description 5' },
-  { src: gallery6, alt: 'Gallery 6', description: 'Description 6' },
-]
-
+const galleryImages = ref([])
+const isLoading = ref(true)
 const selectedImage = ref(null)
 const marqueeContent = ref(null)
 const hoveredIndex = ref(null)
@@ -64,6 +67,17 @@ const showModal = (image) => {
 const closeModal = () => {
   selectedImage.value = null
 }
+
+onMounted(async () => {
+  try {
+    isLoading.value = true
+    galleryImages.value = await getAllGalleryItems()
+  } catch (error) {
+    console.error('Error fetching gallery images:', error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>
 
 <style>
@@ -72,9 +86,7 @@ const closeModal = () => {
 .font-poppins {
   font-family: 'Poppins', Helvetica;
 }
-</style>
 
-<style scoped>
 .section-container {
   width: 100%;
   margin: 0;
@@ -112,8 +124,6 @@ const closeModal = () => {
   padding-bottom: 11rem;
   /* Tambahkan padding bottom untuk memberi jarak */
 }
-
-
 
 .marquee-content {
   display: flex;
