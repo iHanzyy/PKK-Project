@@ -148,8 +148,6 @@ const bottomRoles = [
   opacity: 0;
 }
 
-
-
 .card:hover .role-title {
   transform: translateY(0);
   opacity: 1;
@@ -158,9 +156,11 @@ const bottomRoles = [
 .vertical-line-top,
 .vertical-line-bottom,
 .horizontal-line {
-  background: white;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7));
   position: relative;
   z-index: 1;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
 }
 
 .vertical-line-top {
@@ -207,6 +207,7 @@ const bottomRoles = [
   .vertical-line-top,
   .vertical-line-bottom {
     height: 35px;
+    margin: 0;
   }
 }
 
@@ -222,7 +223,7 @@ const bottomRoles = [
   .bottom-roles {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    margin-top: 1rem;
+    margin-top: 0;
   }
 
   .card {
@@ -242,6 +243,7 @@ const bottomRoles = [
   .vertical-line-top,
   .vertical-line-bottom {
     height: 30px;
+    margin: 0;
   }
 
   .horizontal-line {
@@ -262,6 +264,20 @@ const bottomRoles = [
   .bottom-roles {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    row-gap: 0; /* This ensures no vertical spacing between rows */
+    margin-top: 0;
+  }
+
+  /* To maintain horizontal spacing only */
+  .bottom-roles {
+    column-gap: 1rem; 
+  }
+
+  /* Ensure all vertical lines from bottom roles connect properly */
+  .vertical-line-bottom {
+    height: 25px;
+    margin-top: -2px; /* Connect to horizontal line */
+    margin-bottom: 0;
   }
 
   .card {
@@ -285,10 +301,11 @@ const bottomRoles = [
   .vertical-line-top,
   .vertical-line-bottom {
     height: 25px;
+    margin-top: 0;
   }
 
   .horizontal-line {
-    width: 65%;
+    width: 55%;
     height: 4px;
   }
 }

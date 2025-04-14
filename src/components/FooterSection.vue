@@ -30,11 +30,13 @@
 
 <style scoped>
 .footer {
-  background: linear-gradient(to right bottom, #FF8A08, #FFC100);
+  background: linear-gradient(to bottom, #FF8A08, #FFC100);
   padding: 2rem 0 1.5rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+  /* Removed the box-shadow that was creating the visual divide */
+  margin-top: -1px;
+  /* Prevents any pixel gap between sections */
 }
 
 /* Improve the pattern overlay */
@@ -108,12 +110,10 @@
 
 .footer-divider {
   height: 1px;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0.1)
-  );
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.1));
   margin: 1.25rem 0;
 }
 
@@ -124,7 +124,8 @@
   gap: 0.25rem;
 }
 
-.copyright, .rights {
+.copyright,
+.rights {
   font-family: 'Poppins', sans-serif;
   font-size: 0.875rem;
   color: white;
@@ -146,30 +147,30 @@
   .footer {
     padding: 3rem 0 2rem;
   }
-  
+
   .brand-container {
     justify-content: flex-start;
   }
-  
+
   .logo-container {
     width: 80px;
     height: 80px;
   }
-  
+
   .brand-name {
     font-size: 1.75rem;
   }
-  
+
   .brand-tagline {
     font-size: 1rem;
   }
-  
+
   .footer-bottom {
     flex-direction: row;
     justify-content: center;
     gap: 0.75rem;
   }
-  
+
   .copyright::after {
     content: '|';
     margin-left: 0.75rem;
@@ -179,9 +180,12 @@
 
 /* Animation for logo */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }

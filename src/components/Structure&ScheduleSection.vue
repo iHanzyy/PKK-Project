@@ -3,12 +3,9 @@
     <div class="w-full bg-gradient-to-b from-[#FF6500] to-[#FF8A08] pb-16 relative">
       <!-- Subtle texture overlay -->
       <div class="absolute inset-0 pattern-overlay"></div>
-      
+
       <!-- Properly structured semantic heading and tab navigation -->
-      <div class="relative pt-16 pb-12 text-center">
-        <h2 class="mb-8 text-4xl font-extrabold text-white font-poppins">
-          Class Information
-        </h2>
+      <div class="relative pb-12 text-center">
 
         <!-- Separated tab navigation from heading -->
         <div class="tab-navigation">
@@ -218,62 +215,95 @@ const onLeave = (el, done) => {
   position: absolute;
   bottom: 0;
   height: 4px;
-  width: 40%;
-  /* Adjusted width to match text size */
   background: linear-gradient(90deg, #FFF 0%, rgba(255, 255, 255, 0.7) 100%);
   border-radius: 4px;
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.9);
-  left: 30%;
-  /* Position from left edge */
+
+  /* Default values */
+  width: 100px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
+/* Positioning for Structure tab */
 .tab-indicator.left {
-  transform: translateX(-65%);
-  /* Move left for "Structure" */
+  width: 100px;
+  left: calc(25% - 5px);
+  /* Adjust to align with Structure tab */
+  transform: translateX(-50%);
 }
 
+/* Positioning for Schedule tab */
 .tab-indicator.right {
-  transform: translateX(65%);
-  /* Move right for "Schedule" */
+  width: 100px;
+  left: calc(75% + 15px);
+  /* Adjust to align with Schedule tab */
+  transform: translateX(-50%);
+}
+
+/* Mobile adjustments - Medium screens */
+@media (max-width: 640px) {
+  .tab-indicator {
+    width: 85px;
+  }
+
+  .tab-indicator.left {
+    width: 85px;
+    left: calc(25% - 3px);
+  }
+
+  .tab-indicator.right {
+    width: 85px;
+    left: calc(75% + 3px);
+  }
+}
+
+/* Mobile adjustments - Small screens */
+@media (max-width: 400px) {
+  .tab-indicator {
+    width: 75px;
+  }
+
+  .tab-indicator.left {
+    width: 75px;
+    left: calc(25% - 2px);
+  }
+
+  .tab-indicator.right {
+    width: 75px;
+    left: calc(75% + 9px);
+  }
+}
+
+/* Smallest screens */
+@media (max-width: 360px) {
+  .tab-button {
+    padding: 6px 10px;
+    font-size: 1rem;
+    gap: 4px;
+  }
+
+  .tab-divider {
+    width: 12px;
+  }
+
+  .tab-indicator {
+    width: 65px;
+  }
+
+  .tab-indicator.left {
+    width: 65px;
+    left: calc(25% - 0px);
+  }
+
+  .tab-indicator.right {
+    width: 65px;
+    left: calc(75% + 0px);
+  }
 }
 
 /* Mobile adjustments for indicator */
-@media (max-width: 640px) {
-  .tab-indicator {
-    width: 35%;
-  }
-
-  .tab-indicator.left {
-    transform: translateX(-60%);
-  }
-
-  .tab-indicator.right {
-    transform: translateX(60%);
-  }
-}
-
-@media (max-width: 400px) {
-  .tab-indicator {
-    width: 30%;
-  }
-
-  .tab-indicator.left {
-    transform: translateX(-55%);
-  }
-
-  .tab-indicator.right {
-    transform: translateX(55%);
-  }
-}
-
-/* Enhanced Content Transitions */
-.content-switch-enter-from,
-.content-switch-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
 @media (max-width: 640px) {
   .tab-button {
     padding: 8px 16px;
@@ -302,6 +332,13 @@ const onLeave = (el, done) => {
   .tab-divider {
     width: 16px;
   }
+}
+
+/* Enhanced Content Transitions */
+.content-switch-enter-from,
+.content-switch-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 /* Add this pattern overlay class */

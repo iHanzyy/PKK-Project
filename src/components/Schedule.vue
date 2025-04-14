@@ -8,28 +8,18 @@
 
     <!-- Schedule Navigation -->
     <div class="schedule-nav" data-aos="fade-up" data-aos-delay="300">
-      <button 
-        @click="viewBlock = 1" 
-        :class="['nav-btn', viewBlock === 1 ? 'active' : '']"
-      >
+      <button @click="viewBlock = 1" :class="['nav-btn', viewBlock === 1 ? 'active' : '']">
         Blok 1
       </button>
-      <button 
-        @click="viewBlock = 2" 
-        :class="['nav-btn', viewBlock === 2 ? 'active' : '']"
-      >
+      <button @click="viewBlock = 2" :class="['nav-btn', viewBlock === 2 ? 'active' : '']">
         Blok 2
       </button>
     </div>
 
     <!-- Days Navigation -->
     <div class="days-nav" data-aos="fade-up" data-aos-delay="400">
-      <button 
-        v-for="(day, index) in daysOfWeek" 
-        :key="index"
-        @click="selectedDay = index"
-        :class="['day-btn', selectedDay === index ? 'active' : '', isToday(index) ? 'today' : '']"
-      >
+      <button v-for="(day, index) in daysOfWeek" :key="index" @click="selectedDay = index"
+        :class="['day-btn', selectedDay === index ? 'active' : '', isToday(index) ? 'today' : '']">
         {{ day.short }}
       </button>
     </div>
@@ -39,29 +29,22 @@
       <!-- Weekend Message -->
       <div v-if="selectedDay === 5 || selectedDay === 6" class="weekend-message">
         <div class="libur-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
             <path d="M5 3v18M19 9v12M12 3v18M5 9h7M12 17h7"></path>
           </svg>
         </div>
         <h3>{{ daysOfWeek[selectedDay].name }}</h3>
         <p>Libur</p>
       </div>
-      
+
       <!-- Weekday Schedule -->
       <div v-else class="day-schedule">
         <transition name="fade" mode="out-in">
-          <div 
-            :key="`${viewBlock}-${selectedDay}`" 
-            class="schedule-slots"
-          >
-            <div 
-              v-for="(slot, slotIndex) in currentSchedule" 
-              :key="slotIndex" 
-              class="schedule-slot"
-              :class="isCurrentTimeSlot(slot) ? 'current-slot' : ''"
-              data-aos="fade-up"
-              :data-aos-delay="100 + (slotIndex * 50)"
-            >
+          <div :key="`${viewBlock}-${selectedDay}`" class="schedule-slots">
+            <div v-for="(slot, slotIndex) in currentSchedule" :key="slotIndex" class="schedule-slot"
+              :class="isCurrentTimeSlot(slot) ? 'current-slot' : ''" data-aos="fade-up"
+              :data-aos-delay="100 + (slotIndex * 50)">
               <div class="time">
                 {{ slot.time }}
                 <span v-if="isCurrentTimeSlot(slot)" class="current-indicator">Sekarang</span>
@@ -220,8 +203,8 @@ const currentBlock = computed(() => {
 // Week info for display
 const weekInfo = computed(() => {
   const daysUntilNextBlock = 14 - ((now.value - blok1StartDate) / (24 * 60 * 60 * 1000)) % 14
-  return daysUntilNextBlock <= 7 
-    ? `${Math.ceil(daysUntilNextBlock)} hari ke BLOK ${currentBlock.value === 1 ? 2 : 1}` 
+  return daysUntilNextBlock <= 7
+    ? `${Math.ceil(daysUntilNextBlock)} hari ke BLOK ${currentBlock.value === 1 ? 2 : 1}`
     : `Minggu ${Math.ceil((14 - daysUntilNextBlock) / 7)} dari 2`
 })
 
@@ -252,19 +235,19 @@ const isCurrentTimeSlot = (slot) => {
   const currentHour = now.value.getHours()
   const currentMinute = now.value.getMinutes()
   const currentTimeInMinutes = currentHour * 60 + currentMinute
-  
+
   // Extract start and end times from the slot
   const [startStr, endStr] = slot.time.split(' - ')
   const [startHour, startMinute] = startStr.split(':').map(Number)
   const [endHour, endMinute] = endStr.split(':').map(Number)
-  
+
   const startTimeInMinutes = startHour * 60 + startMinute
   const endTimeInMinutes = endHour * 60 + endMinute
-  
-  return currentTimeInMinutes >= startTimeInMinutes && 
-         currentTimeInMinutes <= endTimeInMinutes && 
-         selectedDay.value === (now.value.getDay() - 1) && 
-         viewBlock.value === currentBlock.value
+
+  return currentTimeInMinutes >= startTimeInMinutes &&
+    currentTimeInMinutes <= endTimeInMinutes &&
+    selectedDay.value === (now.value.getDay() - 1) &&
+    viewBlock.value === currentBlock.value
 }
 
 // Update current time every minute
@@ -275,7 +258,7 @@ setInterval(() => {
 onMounted(() => {
   // Initialize AOS
   AOS.refresh()
-  
+
   // Set interval to update current time
   setInterval(() => {
     now.value = new Date()
@@ -442,6 +425,14 @@ onMounted(() => {
   font-weight: 500;
   font-size: 0.9rem;
   position: relative;
+  padding-right: 10px;
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.current-slot .time {
+  padding-top: 5px;
 }
 
 .current-indicator {
@@ -451,24 +442,12 @@ onMounted(() => {
   color: white;
   padding: 2px 6px;
   border-radius: 4px;
-  top: -8px;
-  left: 0;
+  top: -10px;
+  left: 29px;
+  /* Position on right side */
   animation: pulse 2s infinite;
-}
-
-.subject-container {
-  flex: 1;
-}
-
-.subject {
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-
-.teacher {
-  font-size: 0.875rem;
-  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 2;
 }
 
 /* Animations */
@@ -484,9 +463,12 @@ onMounted(() => {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.6;
   }
@@ -497,20 +479,27 @@ onMounted(() => {
   .schedule-container {
     padding: 0.5rem;
   }
-  
+
   .time {
     width: 110px;
     font-size: 0.8rem;
+    padding-right: 12px;
+    /* More space for indicator */
   }
-  
+
+  .current-indicator {
+    font-size: 0.65rem;
+    padding: 1px 5px;
+  }
+
   .subject {
     font-size: 1rem;
   }
-  
+
   .teacher {
     font-size: 0.8rem;
   }
-  
+
   .schedule-slot {
     padding: 0.75rem;
   }
@@ -520,26 +509,34 @@ onMounted(() => {
   .block-label {
     font-size: 1.5rem;
   }
-  
+
   .day-btn {
     font-size: 0.75rem;
     padding: 0.4rem 0.2rem;
   }
-  
+
   .schedule-slot {
     flex-direction: column;
     gap: 0.5rem;
+    position: relative;
+    padding-top: 16px;
+    /* Add space for indicator at top */
   }
-  
+
   .time {
     width: 100%;
     margin-bottom: 0.25rem;
   }
-  
+
+  .current-indicator {
+    top: -8px;
+    right: 10px;
+  }
+
   .weekend-message {
     padding: 2rem 1rem;
   }
-  
+
   .libur-icon {
     width: 60px;
     height: 60px;
