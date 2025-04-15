@@ -443,11 +443,51 @@ onMounted(() => {
   padding: 2px 6px;
   border-radius: 4px;
   top: -10px;
-  left: 29px;
-  /* Position on right side */
+  left: 0;
   animation: pulse 2s infinite;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   z-index: 2;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* Responsive styles for the current indicator */
+@media (max-width: 768px) {
+  .current-indicator {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    top: -8px;
+    left: initial;
+    right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .schedule-slot {
+    padding-top: 1.25rem;
+    position: relative;
+  }
+
+  .time {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-right: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .current-indicator {
+    position: absolute;
+    top: -14px;
+    right: 8px;
+    left: initial;
+    padding: 1px 8px;
+    font-size: 0.65rem;
+    border-radius: 3px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
 }
 
 /* Animations */

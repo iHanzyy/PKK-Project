@@ -218,11 +218,11 @@ onMounted(async () => {
 .marquee-track {
   display: flex;
   width: fit-content;
-  animation: track 40s linear infinite;
+  animation: track 100s linear infinite;
 }
 
 .marquee-track.reverse {
-  animation: track-reverse 45s linear infinite;
+  animation: track-reverse 105s linear infinite;
 }
 
 /* Content styling */
@@ -337,11 +337,11 @@ onMounted(async () => {
   }
 
   .marquee-track {
-    animation-duration: 30s;
+    animation-duration: 100s;
   }
 
   .marquee-track.reverse {
-    animation-duration: 35s;
+    animation-duration: 105s;
   }
 }
 
@@ -352,11 +352,11 @@ onMounted(async () => {
   }
 
   .marquee-track {
-    animation-duration: 25s;
+    animation-duration: 100s;
   }
 
   .marquee-track.reverse {
-    animation-duration: 30s;
+    animation-duration: 105s;
   }
 
   .image-caption {
