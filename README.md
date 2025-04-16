@@ -67,7 +67,7 @@ Lalu, isi file `.env` dengan kredensial Firebase dan Cloudinary milikmu.
 
 ## 🌐 Production Build
 
-Coming soon...
+https://website-dkv3.vercel.app/
 
 ---
 
@@ -83,11 +83,5 @@ Proyek ini dikembangkan oleh:
 ## 📝 License
 
 This project is licensed under the [MIT License](LICENSE).
-
----
-
-## 🔗 Live Demo
-
-**Coming soon!**
 
 ---
