@@ -29,7 +29,7 @@
 
 - **Firebase Authentication** – Autentikasi pengguna yang aman
 - **Firestore** – Database cloud NoSQL untuk data aplikasi
-- **Firebase Storage** – Penyimpanan cloud untuk gambar yang diunggah
+- **Cloudinary** – Penyimpanan cloud untuk gambar yang diunggah
 
 ### 🧰 Development Tools
 
@@ -42,7 +42,7 @@
 ## ✨ Features
 
 - 📸 **Image Gallery** – Galeri interaktif untuk menampilkan foto dan event kelas
-- 🏫 **Class Structure** – Menampilkan struktur organisasi dalam bentuk card menarik
+- 🏫 **Class Structure** – Menampilkan struktur kelas dalam bentuk card menarik
 - 📅 **Class Schedule** – Viewer jadwal real-time berdasarkan tanggal dan blok pelajaran
 - 📱 **Responsive Design** – Tampilan optimal di semua ukuran layar
 - 🔐 **Admin Dashboard** – Antarmuka admin aman untuk pengelolaan konten
@@ -91,5 +91,3 @@ This project is licensed under the [MIT License](LICENSE).
 **Coming soon!**
 
 ---
-
-© 2025 **XI DKV 3** | All Rights Reserved
