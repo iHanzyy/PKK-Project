@@ -116,6 +116,10 @@ const bottomRoles = [
   transition: transform 0.3s ease;
 }
 
+.card-group {
+  position: relative;
+}
+
 .card img {
   width: 100%;
   height: 288px;
@@ -136,7 +140,7 @@ const bottomRoles = [
 .role-title {
   position: absolute;
   left: 0;
-  bottom: 3.4rem;
+  bottom: 15%;
   width: 100%;
   padding: 1rem 1rem 0.5rem;
   background: white;
@@ -195,34 +199,20 @@ const bottomRoles = [
 
 @media (max-width: 1200px) {
   .horizontal-line {
-    width: 85%;
-  }
-}
-
-@media (max-width: 992px) {
-  .horizontal-line {
-    width: 80%;
+    width: 85vw;
   }
 
-  .vertical-line-top,
-  .vertical-line-bottom {
-    height: 35px;
-    margin: 0;
-  }
-}
-
-@media (max-width: 768px) {
   .container-structure {
     padding: 1rem;
   }
 
   .top-roles {
-    gap: 0.75rem;
+    gap: 0;
   }
 
   .bottom-roles {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 0;
     margin-top: 0;
   }
 
@@ -247,7 +237,56 @@ const bottomRoles = [
   }
 
   .horizontal-line {
-    width: 85%;
+    width: 50.6%;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .vertical-line-top,
+  .vertical-line-bottom {
+    height: 35px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-structure {
+    padding: 1rem;
+  }
+
+  .top-roles {
+    gap: 0;
+  }
+
+  .bottom-roles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin-top: 0;
+  }
+
+  .card {
+    width: 180px;
+  }
+
+  .card img {
+    height: 220px;
+  }
+
+  .role-name h1,
+  .role-title h1 {
+    font-size: 0.875rem;
+    padding: 0 0.25rem;
+  }
+
+  .vertical-line-top,
+  .vertical-line-bottom {
+    height: 30px;
+    margin: 0;
+  }
+
+  .horizontal-line {
+    width: 50.6%;
   }
 }
 
@@ -264,24 +303,26 @@ const bottomRoles = [
   .bottom-roles {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    row-gap: 0; /* This ensures no vertical spacing between rows */
+    gap: 0 !important;
+    /* This ensures no vertical spacing between rows */
     margin-top: 0;
   }
 
   /* To maintain horizontal spacing only */
   .bottom-roles {
-    column-gap: 1rem; 
+    column-gap: 1rem;
   }
 
   /* Ensure all vertical lines from bottom roles connect properly */
   .vertical-line-bottom {
     height: 25px;
-    margin-top: -2px; /* Connect to horizontal line */
+    margin-top: -2px;
+    /* Connect to horizontal line */
     margin-bottom: 0;
   }
 
   .card {
-    width: 150px;
+    width: 120px;
   }
 
   .card img {
@@ -305,8 +346,7 @@ const bottomRoles = [
   }
 
   .horizontal-line {
-    width: 55%;
-    height: 4px;
+    width: 42.6vw;
   }
 }
 
