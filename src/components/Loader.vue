@@ -20,7 +20,7 @@
 <script setup>
 import { onMounted, onBeforeUnmount } from 'vue';
 
-const logo = '/public/dkvicon.png'
+const logo = '/dkvicon.png'
 
 // Setup particleground when component is mounted
 onMounted(() => {

@@ -66,7 +66,7 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-const logo = '/public/dkvicon.png'
+const logo = '/dkvicon.png'
 
 const navigation = [
   { name: 'Home', href: '#home' },

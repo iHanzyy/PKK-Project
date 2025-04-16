@@ -5,7 +5,7 @@
       <div class="login-box">
         <div class="login-header">
           <div class="logo-container">
-            <img src="/public/jacicon.svg" alt="JACorporation Logo" />
+            <img src="/jacicon.svg" alt="JACorporation Logo" />
           </div>
           <h2 class="text-3xl font-bold text-slate-800">Admin Portal</h2>
           <p class="text-slate-600">Sign in to manage your gallery</p>
