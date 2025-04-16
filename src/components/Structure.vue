@@ -109,23 +109,26 @@ const bottomRoles = [
 .card {
   position: relative;
   width: 220px;
-  overflow: visible;
-  background: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s ease;
+  border: 1px solid rgba(240, 240, 240, 0.8);
 }
 
-.card-group {
-  position: relative;
-}
+
 
 .card img {
   width: 100%;
   height: 288px;
   object-fit: cover;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
+  transition: all 0.5s ease;
+  filter: brightness(0.98);
+}
+
+.card:hover img {
+  filter: brightness(1.05);
 }
 
 .role-name {
@@ -133,8 +136,9 @@ const bottomRoles = [
   z-index: 20;
   padding: 1rem;
   background: white;
-  border-bottom-left-radius: 0.75rem;
-  border-bottom-right-radius: 0.75rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .role-title {
@@ -142,14 +146,14 @@ const bottomRoles = [
   left: 0;
   bottom: 15%;
   width: 100%;
-  padding: 1rem 1rem 0.5rem;
-  background: white;
+  padding: 1rem 1rem 0.8rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
   transform: translateY(100%);
-  transition:
-    transform 0.3s ease,
-    opacity 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 10;
   opacity: 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover .role-title {
@@ -160,41 +164,49 @@ const bottomRoles = [
 .vertical-line-top,
 .vertical-line-bottom,
 .horizontal-line {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7));
+  background: linear-gradient(90deg, rgba(245, 245, 245, 0.4), rgba(255, 255, 255, 1), rgba(245, 245, 245, 0.4));
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.7);
-  border-radius: 4px;
+  box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
 }
 
 .vertical-line-top {
-  width: 4px;
+  width: 2px;
   height: 40px;
   margin: 0;
 }
 
 .vertical-line-bottom {
-  width: 4px;
+  width: 2px;
   height: 40px;
   margin: 0;
 }
 
 .horizontal-line {
   width: 77%;
-  height: 4px;
+  height: 2px;
   margin: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
 }
 
 .role-name h1,
 .role-title h1 {
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
-  color: black;
+  color: #333;
   font-size: 1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.role-title h1 {
+  color: #506377;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 1200px) {
