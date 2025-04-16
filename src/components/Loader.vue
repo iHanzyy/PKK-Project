@@ -39,11 +39,11 @@ onMounted(() => {
                 maxSpeedX: 0.6,
                 minSpeedY: 0.3,
                 maxSpeedY: 0.6,
-                density: 50000,
+                density: 15000,
                 curvedLines: false,
                 proximity: 250,
                 parallaxMultiplier: 10,
-                particleRadius: 4,
+                particleRadius: 3,
             });
 
             window.particleground(document.getElementById('particles-background'), {

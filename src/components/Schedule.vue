@@ -204,7 +204,7 @@ const currentBlock = computed(() => {
 const weekInfo = computed(() => {
   const daysUntilNextBlock = 14 - ((now.value - blok1StartDate) / (24 * 60 * 60 * 1000)) % 14
   return daysUntilNextBlock <= 7
-    ? `${Math.ceil(daysUntilNextBlock)} hari ke BLOK ${currentBlock.value === 1 ? 2 : 1}`
+    ? `${Math.ceil(daysUntilNextBlock)} hari menuju BLOK ${currentBlock.value === 1 ? 2 : 1}`
     : `Minggu ${Math.ceil((14 - daysUntilNextBlock) / 7)} dari 2`
 })
 

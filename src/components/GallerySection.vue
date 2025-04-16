@@ -218,6 +218,7 @@ onMounted(async () => {
 .marquee-track {
   display: flex;
   width: fit-content;
+  will-change: transform;
   animation: track 100s linear infinite;
 }
 

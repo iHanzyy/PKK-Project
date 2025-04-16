@@ -4,7 +4,7 @@
     <div class="top-roles">
       <div v-for="(item, index) in topRoles" :key="index" class="card-wrapper">
         <div class="card group" data-aos="fade-up" data-aos-duration="700">
-          <img :src="item.image" alt="role-image" />
+          <img :src="item.image" loading="lazy" alt="role-image" />
 
           <div class="role-name">
             <h1>{{ item.name }}</h1>
@@ -28,7 +28,7 @@
         <!-- Vertical line for bottom roles -->
         <div class="vertical-line-bottom"></div>
         <div class="card group" data-aos="fade-up" data-aos-duration="700">
-          <img :src="item.image" alt="role-image" />
+          <img :src="item.image" loading="lazy" alt="role-image" />
 
           <div class="role-name">
             <h1>{{ item.name }}</h1>
@@ -44,13 +44,13 @@
 </template>
 
 <script setup>
-import waliKelasImg from '../assets/waliKelas.jpg'
-import ketuaKelasImg from '../assets/ketuaKelas.jpg'
-import wakilKetuaKelasImg from '../assets/wakilKetuaKelas.jpg'
-import sekretaris1Img from '../assets/sekretaris1.jpg'
-import sekretaris2Img from '../assets/sekretaris2.jpg'
-import bendahara1Img from '../assets/bendahara1.jpg'
-import bendahara2Img from '../assets/bendahara2.jpg'
+import waliKelasImg from '../assets/waliKelas.webp'
+import ketuaKelasImg from '../assets/ketuaKelas.webp'
+import wakilKetuaKelasImg from '../assets/wakilKetuaKelas.webp'
+import sekretaris1Img from '../assets/sekretaris1.webp'
+import sekretaris2Img from '../assets/sekretaris2.webp'
+import bendahara1Img from '../assets/bendahara1.webp'
+import bendahara2Img from '../assets/bendahara2.webp'
 
 const topRoles = [
   { role: 'Wali Kelas', name: 'Kamiludin, S.Kom', image: waliKelasImg },
@@ -64,6 +64,7 @@ const bottomRoles = [
   { role: 'Bendahara 1', name: 'Nayza Fitri Putriana', image: bendahara1Img },
   { role: 'Bendahara 2', name: 'Malika Danish Ara', image: bendahara2Img },
 ]
+
 </script>
 
 <style scoped>
