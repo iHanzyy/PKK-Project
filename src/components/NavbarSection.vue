@@ -34,14 +34,20 @@
           </button>
         </div>
 
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu Backdrop -->
+        <transition enter-active-class="transition-opacity duration-200 ease-linear" enter-from-class="opacity-0"
+          enter-to-class="opacity-100" leave-active-class="transition-opacity duration-200 ease-linear"
+          leave-from-class="opacity-100" leave-to-class="opacity-0">
+          <div v-show="isMenuOpen" @click="closeMenu" class="fixed inset-0 z-40 bg-black/30 md:hidden"></div>
+        </transition>
+
+        <!-- Mobile Menu (moved after backdrop with higher z-index) -->
         <transition enter-active-class="transition duration-200 ease-out" enter-from-class="-translate-y-5 opacity-0"
           enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
           leave-from-class="translate-y-0 opacity-100" leave-to-class="-translate-y-5 opacity-0">
-          <div v-show="isMenuOpen" class="md:hidden absolute top-full left-0 w-full bg-[#C40C0C] shadow-xl">
+          <div v-show="isMenuOpen" class="md:hidden absolute top-full left-0 w-full bg-[#C40C0C] shadow-xl z-50">
             <div class="px-4 pt-2 pb-4 space-y-3">
-              <a v-for="(nav, index) in navigation" :key="index" href="#"
-                @click.prevent="(scrollToSection(nav.href), closeMenu())"
+              <a v-for="(nav, index) in navigation" :key="index" href="#" @click.prevent="handleNavClick(nav.href)"
                 class="block px-4 py-3 text-2xl font-poppins text-white rounded-lg hover:bg-[#FF6500] transition-colors duration-300">
                 {{ nav.name }}
               </a>
@@ -49,13 +55,6 @@
           </div>
         </transition>
       </div>
-
-      <!-- Mobile Menu Backdrop -->
-      <transition enter-active-class="transition-opacity duration-200 ease-linear" enter-from-class="opacity-0"
-        enter-to-class="opacity-100" leave-active-class="transition-opacity duration-200 ease-linear"
-        leave-from-class="opacity-100" leave-to-class="opacity-0">
-        <div v-show="isMenuOpen" @click="closeMenu" class="fixed inset-0 z-40 bg-black/30 md:hidden"></div>
-      </transition>
     </nav>
   </header>
 
@@ -77,9 +76,14 @@ const navigation = [
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 
+// Add a dedicated function to handle navigation clicks
+const handleNavClick = (href) => {
+  scrollToSection(href)
+  closeMenu()
+}
+
 // Scroll ke section yang sesuai
 const scrollToSection = (sectionId) => {
-  closeMenu()
   const element = document.querySelector(sectionId)
   if (element) {
     // Tambahkan offset untuk navbar
