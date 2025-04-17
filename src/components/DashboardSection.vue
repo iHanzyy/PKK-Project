@@ -31,7 +31,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor"
                 aria-hidden="true">
                 <path fill-rule="evenodd"
-                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2-2zm8-2v2H7V7a3 3 0 016 0z"
                   clip-rule="evenodd" />
               </svg>
               <input v-model="password" id="password-input" type="password" class="form-input" placeholder="••••••••"
@@ -139,20 +139,35 @@
           <p class="mt-2">Click "Add Photo" to upload your first image</p>
         </div>
 
-        <!-- Gallery grid - Improved responsive design -->
+        <!-- Gallery grid with unified responsive design -->
         <div v-else class="gallery-grid" aria-live="polite">
           <div class="gallery-item" v-for="item in galleryItems" :key="item.id">
-            <div class="gallery-image">
-              <img :src="item.image" :alt="item.description" class="object-cover w-full h-full" loading="lazy">
+            <!-- Responsive image - adapts to both mobile and desktop -->
+            <div class="gallery-image-container">
+              <img :src="item.image" :alt="item.description" class="gallery-img" loading="lazy">
             </div>
+
+            <!-- Responsive controls - adapts to both mobile and desktop -->
             <div class="gallery-controls">
-              <div class="truncate gallery-description">{{ item.description }}</div>
-              <div class="flex space-x-2">
+              <div class="gallery-description-container">
+                <p class="truncate gallery-description">{{ item.description }}</p>
+              </div>
+              <div class="gallery-buttons">
                 <button class="gallery-button edit" @click="openEditModal(item)" aria-label="Edit this gallery item">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
                   Edit
                 </button>
                 <button class="gallery-button delete" @click="confirmDelete(item)"
                   aria-label="Delete this gallery item">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
                   Delete
                 </button>
               </div>
@@ -607,25 +622,44 @@ onMounted(() => {
   @apply px-4 py-3 min-h-[48px] bg-indigo-500 text-white rounded-lg flex items-center text-sm font-medium hover:bg-indigo-600 transition-colors duration-200 w-full sm:w-auto justify-center sm:justify-start;
 }
 
-/* Gallery Grid - Improved touch areas */
+/* Gallery Grid - Fully responsive for all devices */
 .gallery-grid {
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-3 md:p-5;
 }
 
 .gallery-item {
-  @apply bg-slate-50 rounded-lg overflow-hidden relative transition-all hover:shadow-md;
+  @apply bg-slate-50 rounded-lg overflow-hidden transition-all hover:shadow-md flex flex-row sm:flex-col;
+  /* Horizontal on mobile, vertical on desktop */
 }
 
-.gallery-image {
-  @apply h-40 bg-slate-200 overflow-hidden;
+.gallery-image-container {
+  @apply w-1/3 h-24 sm:w-full sm:h-40 bg-slate-200 overflow-hidden;
+  /* 1/3 width on mobile, full width on desktop */
+}
+
+.gallery-img {
+  @apply object-cover w-full h-full;
 }
 
 .gallery-controls {
-  @apply p-3 md:p-4 flex flex-col sm:flex-row justify-between gap-2;
+  @apply flex flex-col justify-between w-2/3 sm:w-full p-3 md:p-4;
+  /* 2/3 width on mobile, full width on desktop */
+}
+
+.gallery-description-container {
+  @apply min-h-[24px] flex items-center mb-2;
+}
+
+.gallery-description {
+  @apply text-xs md:text-sm text-slate-700;
+}
+
+.gallery-buttons {
+  @apply flex space-x-2;
 }
 
 .gallery-button {
-  @apply px-3 py-2 min-h-[36px] rounded text-xs font-medium flex items-center justify-center;
+  @apply px-3 py-2 min-h-[40px] rounded text-xs font-medium flex items-center justify-center flex-1;
 }
 
 .gallery-button.edit {
@@ -634,10 +668,6 @@ onMounted(() => {
 
 .gallery-button.delete {
   @apply bg-red-50 text-red-600 hover:bg-red-100;
-}
-
-.gallery-description {
-  @apply text-xs md:text-sm text-slate-700 mb-2 sm:mb-0;
 }
 
 /* Loading - Accessible animations */
@@ -695,6 +725,10 @@ onMounted(() => {
   }
 
   .gallery-button {
+    @apply w-full;
+  }
+
+  .gallery-item {
     @apply w-full;
   }
 }
